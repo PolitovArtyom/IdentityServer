@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 
 namespace IdentityServer.Controllers
 {
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private UsersRepository _repo = null;

@@ -1,0 +1,14 @@
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\IdentityServer.Data.dll.config
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\IdentityServer.Data.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\IdentityServer.Data.pdb
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\EntityFramework.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\EntityFramework.xml
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\obj\Debug\IdentityServer.Data.csprojResolveAssemblyReference.cache
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\obj\Debug\IdentityServer.Data.dll
+D:\Lessons\IdentityServer\IdentityServer\IdentityServer.Data\obj\Debug\IdentityServer.Data.pdb
