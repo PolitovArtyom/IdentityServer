@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
-using IdentityServer.Data;
 using IdentityServer.Data.Models;
+using IdentityServer.Data.Repositories;
 using Microsoft.AspNet.Identity;
 
 namespace IdentityServer.Controllers
 {
-    [RoutePrefix("api/Account")]
+    [System.Web.Mvc.RoutePrefix("account")]
     public class AccountController : ApiController
     {
         private UsersRepository _repo = null;

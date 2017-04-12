@@ -1,4 +1,5 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿
+var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -22,9 +23,43 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/orders.html"
     });
 
+    $routeProvider.when("/refresh", {
+        controller: "refreshController",
+        templateUrl: "/app/views/refresh.html"
+    });
+
+    $routeProvider.when("/tokens", {
+        controller: "tokensManagerController",
+        templateUrl: "/app/views/tokens.html"
+    });
+
+    $routeProvider.when("/associate", {
+        controller: "associateController",
+        templateUrl: "/app/views/associate.html"
+    });
+
+    $routeProvider.when("/clients", {
+        controller: "clientsController",
+        templateUrl: "/app/views/clients.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
+
+});
+
+var serviceBase = 'http://localhost:49536/';
+//var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngAuthApp'
+});
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
 });
 
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+
+

@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer.Data;
+using IdentityServer.Data.Repositories;
 using Microsoft.Owin.Security.OAuth;
 
 namespace IdentityServer
