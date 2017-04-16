@@ -21,7 +21,7 @@ namespace IdentityServer.Data.Models
             [Required(ErrorMessage = "Не заполнено поле *Идентификатор*")]
             [Display(Name = "Идентификатор")]
             public string Identifier { get; set; }
-
+            //TODO обеспечить уникальность идентификатора
             [Required(ErrorMessage = "Не заполнено поле *Секрет*")]
             [Display(Name = "Секрет")]
             public string Secret { get; set; }

@@ -1,0 +1,48 @@
+﻿<div class="container">
+    <h2>Client</h2>
+    <form class="form-horizontal" name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Name">Name:</label>
+            <div class="col-sm-6">
+                <input type="text" id="Name" [(ngModel)]="client.name" name="Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="userName">ClientId:</label>
+            <div class="col-sm-6">
+                <input type="text" id="userName" [(ngModel)]="client.identifier" name="userName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="control-label col-sm-2" for="secret">Secret:</label>
+            <div class="col-sm-6">
+                <input type="text" id="secret" [(ngModel)]="client.secret" name="secret">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="callback">Callback</label>
+            <div class="col-sm-6">
+                <input type="text" id="callback" [(ngModel)]="client.callback" name="callback" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="logoutCallback">Logout callback</label>
+            <div class="col-sm-6">
+                <input type="text" id="logoutCallback" [(ngModel)]="client.logoutPage" name="logoutCallback" />
+            </div>
+        </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">Description</label>
+                <div class="col-sm-6">
+                    <input type="text" id="description" [(ngModel)]="client.description" name="description" />
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button [disabled]="loading" class="btn btn-primary">Save</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <a [routerLink]="['/clients']" class="btn btn-link">Back</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -19,7 +19,7 @@ namespace IdentityServer.Controllers
         // POST api/Account/Register
         [System.Web.Mvc.AllowAnonymous]
         [System.Web.Mvc.Route("Register")]
-        public async Task<IHttpActionResult> Register(User userModel)
+        public async Task<IHttpActionResult> Register(IdentityServer.Data.Models.User userModel)
         {
             if (!ModelState.IsValid)
             {

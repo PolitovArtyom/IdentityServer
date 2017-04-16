@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using IdentityServer.Data.Models;
 using IdentityServer.Data.Repositories;
+using IdentityServer.Models;
 
 namespace IdentityServer.Controllers
 {
     [RoutePrefix("client")]
+    [Authorize]
     public class ClientController : ApiController
     {
         private ClientsRepository _repository;
@@ -22,7 +25,7 @@ namespace IdentityServer.Controllers
                 return BadRequest(this.ModelState);
 
             var result = _repository.Get(id);
-            return Ok(new List<Client>() { result });
+            return Ok( result );
         }
 
         public async Task<IHttpActionResult> Get()
@@ -34,7 +37,7 @@ namespace IdentityServer.Controllers
             return Ok(clients);
         }
 
-        public async Task<IHttpActionResult> Post(Client client)
+        public async Task<IHttpActionResult> Post(IdentityServer.Data.Models.Client client)
         {
             if (!ModelState.IsValid)
             {
@@ -58,14 +61,14 @@ namespace IdentityServer.Controllers
 
       
       
-        public async Task<IHttpActionResult> Delete(Client client)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _repository.Remove(client);
+            _repository.Remove(id);
             return Ok();
         }
 

@@ -1,0 +1,27 @@
+﻿<div class="col-md-18 width-70">
+    <h2>Clients</h2>
+    <button [routerLink]="['client']" [queryParams]="{'id': null}" class="btn-primary btn-sm">New</button>
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>ClientId</th>
+                <th>Secret</th>
+                <th>Callback</th>
+                <th>Logout callback</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let client of clients">
+            <td>{{client.id}}</td>
+            <td>{{client.name}}</td>
+            <td>{{client.identifier}}</td>
+            <td>{{client.secret}}</td>
+            <td>{{client.callback}}</td>
+            <td>{{client.logoutPage}}</td>
+            <td>{{client.description}}</td>
+            <td><a [routerLink]="['client']" [queryParams]="{'id': client.id}">Modify</a> | <a  (click)="deleteClient(client.id)">Delete</a></td>
+        </tr>
+    </table>
+</div>

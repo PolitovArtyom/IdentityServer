@@ -1,0 +1,30 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Identity Server</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li *ngIf="authentificated == false">
+                <a [routerLink]="['/login']">Login</a>>
+            </li>
+
+            <li *ngIf="authentificated == false">
+                <a [routerLink]="['/signup']">Register</a>
+            </li>
+
+            <li *ngIf="authentificated == true">
+                <a [routerLink]="['/clients']">Clients</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="authentificated == true">
+                <a ><span class="glyphicon glyphicon-user"></span>{{userName}}</a>
+            </li>
+            <li *ngIf="authentificated == true">
+                <a (click)="logout()">Logout<span class="glyphicon glyphicon-log-out"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>

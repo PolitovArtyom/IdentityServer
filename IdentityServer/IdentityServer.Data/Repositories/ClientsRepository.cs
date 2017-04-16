@@ -51,9 +51,9 @@ namespace IdentityServer.Data.Repositories
             _ctx.SaveChanges();
         }
 
-        public void Remove(Client client)
+        public void Remove(int id)
         {
-            _ctx.Entry(client).State = EntityState.Deleted;
+            _ctx.Entry(new Client() {Id = id}).State = EntityState.Deleted;
             _ctx.SaveChanges();
         }
 
