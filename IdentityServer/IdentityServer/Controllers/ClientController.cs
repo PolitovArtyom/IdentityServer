@@ -68,7 +68,7 @@ namespace IdentityServer.Controllers
                 return BadRequest(ModelState);
             }
 
-            _repository.Remove(id);
+            _repository.Delete(id);
             return Ok();
         }
 

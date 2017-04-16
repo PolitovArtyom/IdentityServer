@@ -5,35 +5,28 @@ namespace IdentityServer.Data.Models
 {
     public class Client
     {
-            //TODO хуита, это не модель DTO
             public Client()
             {
                 ClientRoles = new List<Role>();
             }
 
             [Key]
-            public int Id { get; set; }
+            public long Id { get; set; }
 
-            [Required(ErrorMessage = "Не заполнено поле *Клиент*")]
-            [Display(Name = "Клиент")]
+            [Required()]
             public string Name { get; set; }
 
-            [Required(ErrorMessage = "Не заполнено поле *Идентификатор*")]
-            [Display(Name = "Идентификатор")]
+            [Required()]
             public string Identifier { get; set; }
-            //TODO обеспечить уникальность идентификатора
-            [Required(ErrorMessage = "Не заполнено поле *Секрет*")]
-            [Display(Name = "Секрет")]
+
+            [Required()]
             public string Secret { get; set; }
 
-            [Required(ErrorMessage = "Не заполнено поле *Адрес возврата*")]
-            [Display(Name = "Адрес возврата")]
+            [Required()]
             public string Callback { get; set; }
 
-            [Display(Name = "Описание клиента")]
             public string Description { get; set; }
 
-            [Display(Name = "Адрес, на который происходит редирект при логауте")]
             public string LogoutPage { get; set; }
 
             public List<Role> ClientRoles { get; set; }

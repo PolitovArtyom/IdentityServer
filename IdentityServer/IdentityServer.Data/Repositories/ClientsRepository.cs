@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using IdentityServer.Data.Contexts;
 using IdentityServer.Data.Models;
@@ -11,7 +10,7 @@ namespace IdentityServer.Data.Repositories
 {
     public class ClientsRepository : IDisposable
     {
-        private DataContext _ctx;
+        private readonly DataContext _ctx;
 
         public ClientsRepository()
         {
@@ -23,37 +22,30 @@ namespace IdentityServer.Data.Repositories
             return await _ctx.Clients.ToListAsync();
         }
 
-        public  Client Get(int id)
+        public Client Get(int id)
         {
-            return  _ctx.Clients.Find(id);
+            return _ctx.Clients.Find(id);
         }
 
         public void Add(Client client)
         {
-            try
-            {
-                _ctx.Entry(client).State = EntityState.Added;
-                _ctx.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                
-                throw;
-            }
-           
+            if (_ctx.Clients.Any(a => a.Identifier.Equals(client.Identifier, StringComparison.OrdinalIgnoreCase)))
+                throw new ApplicationException($"Client with identifier {client.Identifier} already exists");
+            _ctx.Entry(client).State = EntityState.Added;
+            _ctx.SaveChanges();
         }
 
         public void Update(Client client)
         {
-            if(client == null)
+            if (client == null)
                 throw new ArgumentNullException(nameof(client));
             _ctx.Entry(client).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
 
-        public void Remove(int id)
+        public void Delete(int id)
         {
-            _ctx.Entry(new Client() {Id = id}).State = EntityState.Deleted;
+            _ctx.Entry(new Client {Id = id}).State = EntityState.Deleted;
             _ctx.SaveChanges();
         }
 

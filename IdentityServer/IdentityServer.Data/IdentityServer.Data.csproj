@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Contexts\DataContext.cs" />
     <Compile Include="Contexts\UsersContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
