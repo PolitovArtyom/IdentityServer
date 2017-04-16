@@ -1,3 +1,11 @@
+IdentityServer/IdentutyServer/bin/
+IdentityServer/IdentutyServer/obj/
+IdentityServer/IdentutyServer/packages/
+
+IdentityServer/IdentutyServer.Data/bin/
+IdentityServer/IdentutyServer.Data/obj/
+IdentityServer/IdentutyServer.Data/packages/
+
 IdentityServer/IdentutyServer.Web/node_modules/
 IdentityServer/IdentutyServer.Web/bin/
 IdentityServer/IdentutyServer.Web/obj/
