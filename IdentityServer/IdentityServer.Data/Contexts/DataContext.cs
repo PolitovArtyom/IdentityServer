@@ -7,11 +7,14 @@ namespace IdentityServer.Data.Contexts
     {
         public DataContext() : base("DbContext")
         {
-        
         }
 
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<Role> Roles { get; set; }
+
+        public DbSet<ResourceRight> ResourceRights { get; set; }
+
+        public DbSet<AuthorisationResource> Resources { get; set; }
     }
 }

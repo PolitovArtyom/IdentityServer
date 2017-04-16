@@ -60,10 +60,13 @@
     <Compile Include="Contexts\DataContext.cs" />
     <Compile Include="Contexts\UsersContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AuthorisationResource.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ResourceRight.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClientsRepository - Copy.cs" />
     <Compile Include="Repositories\ClientsRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
   </ItemGroup>

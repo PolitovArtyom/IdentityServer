@@ -14,9 +14,11 @@ namespace IdentityServer.Data.Models
         public string Name { get; set; }
 
         [Required]
+        [ForeignKey("Client")]
         public Client Client { get; set; }
 
-
-        //TODO связи со сторониими ресурсами ролей
+        [Required]
+        [ForeignKey("ResourceRight")]
+        public ResourceRight Right { get; set; }
     }
 }
