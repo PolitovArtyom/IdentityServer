@@ -1,7 +1,10 @@
 ﻿<div class="col-md-18 width-70">
-    <h2>Clients</h2>
-    <button [routerLink]="['client']" [queryParams]="{'id': null}" class="btn-primary btn-sm">New</button>
-    <table class="table">
+    <h4 class="pull-left">Clients</h4>
+    <button type="button" class="btn btn-success btn-md pull-right" [routerLink]="['client']" [queryParams]="{'id': null}">
+        <span class="glyphicon glyphicon-plus pull-right"></span>
+    </button>
+   
+    <table class="panel-body table">
         <thead class="thead-inverse">
             <tr>
                 <th>#</th>
@@ -21,7 +24,7 @@
             <td>{{client.callback}}</td>
             <td>{{client.logoutPage}}</td>
             <td>{{client.description}}</td>
-            <td><a [routerLink]="['client']" [queryParams]="{'id': client.id}">Modify</a> | <a  (click)="deleteClient(client.id)">Delete</a></td>
+            <td><a [routerLink]="['client']" [queryParams]="{'id': client.id}">Edit</a> | <a (click)="deleteClient(client.id)">Delete</a></td>
         </tr>
     </table>
 </div>

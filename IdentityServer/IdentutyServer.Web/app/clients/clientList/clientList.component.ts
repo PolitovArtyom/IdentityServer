@@ -1,9 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ClientService } from '../services/index';
-import { AlertService } from '../services/index';
-import { Client } from '../models/index';
+import { ClientService, AlertService } from '../../services/index';
+import { Client } from '../../models/index';
 
 @Component({
     selector: 'my-app',
@@ -28,8 +27,7 @@ loadClients(): void{
             .subscribe(
                 data => {
                     this.loading = false;
-                    let mapped: Array<Client> = <Array<Client>>data.json();
-                    this.clients = mapped;
+                    this.clients = data;
                 },
                 error => {
                     this.alertService.error(error);

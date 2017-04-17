@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿<div class="container-fluid">
+    <div class="col-sm-4"> 
     <h2>Client</h2>
     <form class="form-horizontal" name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
         <div class="form-group">
@@ -45,4 +46,13 @@
             </div>
         </div>
     </form>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-lg-8">
+        <roles-list [clientId]=client.id></roles-list>
+    </div>
+  
 </div>

@@ -1,2 +1,3 @@
-﻿export * from './clientList.component';
-export * from './update/client.component';
+﻿export * from './clientList/clientList.component';
+export * from './client/client.component';
+export * from './roles/roles.component';

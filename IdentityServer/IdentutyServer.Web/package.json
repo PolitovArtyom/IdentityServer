@@ -16,15 +16,15 @@
     "@angular/platform-browser": "~4.0.0",
     "@angular/platform-browser-dynamic": "~4.0.0",
     "@angular/router": "~4.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.23",
     "angular-in-memory-web-api": "~0.3.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "moment": "^2.14.1",
     "ng2-bootstrap": "^1.6.3",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
-    "zone.js": "^0.8.4",
-    "moment": "^2.14.1"
-    
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/node": "^6.0.46",

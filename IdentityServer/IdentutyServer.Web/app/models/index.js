@@ -4,4 +4,5 @@ function __export(m) {
 }
 __export(require("./user"));
 __export(require("./client"));
+__export(require("./role"));
 //# sourceMappingURL=index.js.map

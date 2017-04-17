@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import { AlertService, ClientService } from '../../services/index';
+import { RolesComponent } from '../index';
 import { Client } from '../../models/index';
 
 

@@ -10,6 +10,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_routing_1 = require("./app.routing");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var index_1 = require("./directives/index");
 var index_2 = require("./clients/index");
 var signup_component_1 = require("./signup/signup.component");
@@ -27,7 +28,8 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            app_routing_1.routing],
+            app_routing_1.routing,
+            ng_bootstrap_1.NgbModule],
         declarations: [
             app_component_1.AppComponent,
             signup_component_1.SignupComponent,
@@ -35,6 +37,7 @@ AppModule = __decorate([
             index_1.AlertComponent,
             index_2.ClientListComponent,
             index_2.ClientComponent,
+            index_2.RolesComponent,
             index_1.HeaderComponent
         ],
         bootstrap: [app_component_1.AppComponent],

@@ -17,47 +17,28 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var base_service_1 = require("../services/base.service");
-var ClientService = (function (_super) {
-    __extends(ClientService, _super);
-    function ClientService(http) {
+var RoleService = (function (_super) {
+    __extends(RoleService, _super);
+    function RoleService(http) {
         var _this = _super.call(this) || this;
         _this.http = http;
+        //TODO How to inject service uri?
         _this.uri = "http://localhost:49536/";
         return _this;
     }
-    ClientService.prototype.getClients = function () {
+    RoleService.prototype.loadClientRoles = function (clientId) {
         var requestOptions = _super.prototype.getAuthHeader.call(this);
-        return this.http.get(this.uri + '/api/client', requestOptions)
+        return this.http.get(this.uri + '/api/role?clientId=' + clientId, requestOptions)
             .map(function (response) {
-            var clients = response.json();
-            return clients;
+            var roles = response.json();
+            return roles;
         });
     };
-    ClientService.prototype.getClient = function (id) {
-        var requestOptions = _super.prototype.getAuthHeader.call(this);
-        return this.http.get(this.uri + '/api/client/' + id, requestOptions)
-            .map(function (response) {
-            var client = response.json();
-            return client;
-        });
-    };
-    ClientService.prototype.updateClient = function (client) {
-        var requestOptions = _super.prototype.getAuthHeader.call(this);
-        return this.http.put(this.uri + '/api/client/', client, requestOptions);
-    };
-    ClientService.prototype.addClient = function (client) {
-        var requestOptions = _super.prototype.getAuthHeader.call(this);
-        return this.http.post(this.uri + '/api/client/', client, requestOptions);
-    };
-    ClientService.prototype.deleteClient = function (clientId) {
-        var requestOptions = _super.prototype.getAuthHeader.call(this);
-        return this.http.delete(this.uri + '/api/client/' + clientId, requestOptions);
-    };
-    return ClientService;
+    return RoleService;
 }(base_service_1.ServiceBase));
-ClientService = __decorate([
+RoleService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ClientService);
-exports.ClientService = ClientService;
-//# sourceMappingURL=clients.service.js.map
+], RoleService);
+exports.RoleService = RoleService;
+//# sourceMappingURL=role.service.js.map
