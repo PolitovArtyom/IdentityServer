@@ -11,49 +11,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var index_1 = require("../../services/index");
+var index_2 = require("../../models/index");
 var RolesComponent = (function () {
     function RolesComponent(router, alertService, roleService) {
         this.router = router;
         this.alertService = alertService;
         this.roleService = roleService;
         this.loading = false;
-        this.roles = new Array();
+        this.roleRows = new Array();
     }
     Object.defineProperty(RolesComponent.prototype, "clientId", {
         set: function (id) {
             if (id) {
-                this._clientId = 0;
-                this.loadRoles(id);
+                this._clientId = id;
+                this.loadRoles();
             }
         },
         enumerable: true,
         configurable: true
     });
-    RolesComponent.prototype.loadRoles = function (clientId) {
+    RolesComponent.prototype.loadRoles = function () {
         var _this = this;
         this.loading = true;
-        this.roleService.loadClientRoles(clientId)
+        this.roleService.loadClientRoles(this._clientId)
             .subscribe(function (data) {
             _this.loading = false;
-            _this.roles = data;
-        }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
-            _this.roles = new Array();
-        });
+            _this.roleRows = data.map(function (role) {
+                var mapped = new RoleRow();
+                mapped.role = role;
+                return mapped;
+            });
+            ;
+        }, function (error) { return _this.processError(error); });
     };
-    RolesComponent.prototype.modifyRole = function (clientId) {
+    RolesComponent.prototype.newRole = function () {
+        var newRoleRow = new RoleRow();
+        newRoleRow.isLocked = false;
+        newRoleRow.role = new index_2.Role();
+        newRoleRow.role.clientId = this._clientId;
+        this.roleRows.push(newRoleRow);
+    };
+    RolesComponent.prototype.saveRole = function (roleRow) {
         var _this = this;
+        roleRow.isLocked = true;
         this.loading = true;
-        this.roleService.loadClientRoles(clientId)
-            .subscribe(function (data) {
+        var response;
+        if (roleRow.role.id)
+            response = this.roleService.updateRole(roleRow.role);
+        else {
+            response = this.roleService.addRole(roleRow.role);
+        }
+        response.subscribe(function (data) {
             _this.loading = false;
-            _this.roles = data;
-        }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
-            _this.roles = new Array();
-        });
+            _this.loadRoles();
+        }, function (error) { return _this.processError(error); });
+    };
+    RolesComponent.prototype.cancel = function () {
+        this.loadRoles();
+    };
+    RolesComponent.prototype.deleteRole = function (roleId) {
+        var _this = this;
+        this.roleService.deleteRole(roleId)
+            .subscribe(function (data) { return _this.loadRoles(); }, function (error) { return _this.processError(error); });
+    };
+    RolesComponent.prototype.processError = function (error) {
+        this.alertService.error(error);
+        this.loading = false;
+        this.roleRows = new Array();
     };
     return RolesComponent;
 }());
@@ -74,4 +98,10 @@ RolesComponent = __decorate([
         index_1.RoleService])
 ], RolesComponent);
 exports.RolesComponent = RolesComponent;
+var RoleRow = (function () {
+    function RoleRow() {
+        this.isLocked = true;
+    }
+    return RoleRow;
+}());
 //# sourceMappingURL=roles.component.js.map

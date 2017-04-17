@@ -34,6 +34,18 @@ var RoleService = (function (_super) {
             return roles;
         });
     };
+    RoleService.prototype.updateRole = function (role) {
+        var requestOptions = _super.prototype.getAuthHeader.call(this);
+        return this.http.put(this.uri + '/api/role', role, requestOptions);
+    };
+    RoleService.prototype.addRole = function (role) {
+        var requestOptions = _super.prototype.getAuthHeader.call(this);
+        return this.http.post(this.uri + '/api/role', role, requestOptions);
+    };
+    RoleService.prototype.deleteRole = function (roleId) {
+        var requestOptions = _super.prototype.getAuthHeader.call(this);
+        return this.http.delete(this.uri + '/api/role?id=' + roleId, requestOptions);
+    };
     return RoleService;
 }(base_service_1.ServiceBase));
 RoleService = __decorate([

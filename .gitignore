@@ -14,3 +14,5 @@ IdentityServer/IdentityServer.Data/obj/
 IdentityServer/IdentityServer/obj/
 IdentityServer/IdentutyServer.Web/node_modules/
 IdentityServer/IdentutyServer.Web/obj/
+IdentityServer/IdentutyServer.Web/bin/
+npm-debug.log
