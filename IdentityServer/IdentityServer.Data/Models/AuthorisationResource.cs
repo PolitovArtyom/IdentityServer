@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentityServer.Data.Models
 {
@@ -9,5 +12,7 @@ namespace IdentityServer.Data.Models
 
         [Required]
         public string Name { get; set; }
+
+        public ICollection<ResourceRight> Rights { get; set; }
     }
 }

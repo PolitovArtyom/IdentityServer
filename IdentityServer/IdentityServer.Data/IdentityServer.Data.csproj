@@ -66,8 +66,8 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ClientsRepository - Copy.cs" />
     <Compile Include="Repositories\ClientsRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>

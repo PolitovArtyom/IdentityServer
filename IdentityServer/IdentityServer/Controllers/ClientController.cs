@@ -1,18 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using IdentityServer.Data.Models;
 using IdentityServer.Data.Repositories;
 using IdentityServer.Models;
 
 namespace IdentityServer.Controllers
 {
     [RoutePrefix("client")]
-    [Authorize]
+    //  [Authorize]
     public class ClientController : ApiController
     {
-        private ClientsRepository _repository;
+        private readonly ClientsRepository _repository;
 
         public ClientController()
         {
@@ -24,8 +22,9 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            var result = _repository.Get(id);
-            return Ok( result );
+            var client = _repository.Get(id);
+
+            return Ok(new ClientDTO(client));
         }
 
         public async Task<IHttpActionResult> Get()
@@ -34,43 +33,35 @@ namespace IdentityServer.Controllers
                 return BadRequest(this.ModelState);
 
             var clients = await _repository.List();
-            return Ok(clients);
+            return Ok(clients.Select(client => new ClientDTO(client)));
         }
 
-        public async Task<IHttpActionResult> Post(IdentityServer.Data.Models.Client client)
+        public async Task<IHttpActionResult> Post(ClientDTO client)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!this.ModelState.IsValid)
+                return BadRequest(this.ModelState);
 
-            _repository.Add(client);
+            _repository.Add(client.ToModel());
             return Ok();
         }
 
-        public async Task<IHttpActionResult> Put(Client client)
+        public async Task<IHttpActionResult> Put(ClientDTO client)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!this.ModelState.IsValid)
+                return BadRequest(this.ModelState);
 
-            _repository.Update(client);
+            _repository.Update(client.ToModel());
             return Ok();
         }
 
-      
-      
+
         public async Task<IHttpActionResult> Delete(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!this.ModelState.IsValid)
+                return BadRequest(this.ModelState);
 
             _repository.Delete(id);
             return Ok();
         }
-
     }
 }

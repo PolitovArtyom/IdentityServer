@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentityServer.Data.Models
 {
@@ -11,7 +12,7 @@ namespace IdentityServer.Data.Models
             }
 
             [Key]
-            public long Id { get; set; }
+            public int Id { get; set; }
 
             [Required()]
             public string Name { get; set; }
@@ -29,6 +30,6 @@ namespace IdentityServer.Data.Models
 
             public string LogoutPage { get; set; }
 
-            public List<Role> ClientRoles { get; set; }
+            public ICollection<Role> ClientRoles { get; set; }
     }
 }

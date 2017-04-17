@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentityServer.Data.Models
 {
@@ -15,5 +17,7 @@ namespace IdentityServer.Data.Models
 
         [Required]
         public AuthorisationResource Resource { get; set; }
+
+        public ICollection<Role> Roles { get; set; }
     }
 }

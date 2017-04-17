@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentityServer.Data.Models
@@ -6,19 +7,16 @@ namespace IdentityServer.Data.Models
     public class Role
     {
         [Key]
-        [Display(Name = "Id")]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Название роли")]
         public string Name { get; set; }
 
         [Required]
-        [ForeignKey("Client")]
-        public Client Client { get; set; }
+        public int ClientId { get; set; }
+       
+        public virtual Client Client { get; set; }
 
-        [Required]
-        [ForeignKey("ResourceRight")]
-        public ResourceRight Right { get; set; }
+        public ICollection<ResourceRight> Rights { get; set; } = new List<ResourceRight>();
     }
 }

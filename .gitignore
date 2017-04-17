@@ -1,12 +1,16 @@
-IdentityServer/IdentutyServer/bin/
-IdentityServer/IdentutyServer/obj/
-IdentityServer/IdentutyServer/packages/
+IdentityServer/IdentityServer/bin/
+IdentityServer/IdentityServer/obj/
+IdentityServer/IdentityServer/packages/
 
-IdentityServer/IdentutyServer.Data/bin/
-IdentityServer/IdentutyServer.Data/obj/
-IdentityServer/IdentutyServer.Data/packages/
+IdentityServer/IdentityServer.Data/bin/
+IdentityServer/IdentityServer.Data/obj/
+IdentityServer/IdentityServer.Data/packages/
 
-IdentityServer/IdentutyServer.Web/node_modules/
-IdentityServer/IdentutyServer.Web/bin/
-IdentityServer/IdentutyServer.Web/obj/
+IdentityServer/IdentityServer.Web/node_modules/
+IdentityServer/IdentityServer.Web/bin/
+IdentityServer/IdentityServer.Web/obj/
 IdentityServer/packages/
+IdentityServer/IdentityServer.Data/obj/
+IdentityServer/IdentityServer/obj/
+IdentityServer/IdentutyServer.Web/node_modules/
+IdentityServer/IdentutyServer.Web/obj/

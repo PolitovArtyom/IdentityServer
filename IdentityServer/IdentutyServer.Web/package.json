@@ -22,7 +22,9 @@
     "ng2-bootstrap": "^1.6.3",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "moment": "^2.14.1"
+    
   },
   "devDependencies": {
     "@types/node": "^6.0.46",
