@@ -6,6 +6,10 @@ IdentityServer/IdentityServer.Data/bin/
 IdentityServer/IdentityServer.Data/obj/
 IdentityServer/IdentityServer.Data/packages/
 
+IdentityServer/IdentityServer.AuthorizationProvider/bin/
+IdentityServer/IdentityServer.AuthorizationProvider/obj/
+IdentityServer/IdentityServer.AuthorizationProvider/packages/
+
 IdentityServer/IdentityServer.Web/node_modules/
 IdentityServer/IdentityServer.Web/bin/
 IdentityServer/IdentityServer.Web/obj/
