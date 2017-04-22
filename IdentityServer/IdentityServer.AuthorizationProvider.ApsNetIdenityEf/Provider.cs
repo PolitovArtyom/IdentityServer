@@ -1,29 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
 {
     public class Provider : IRegistrationProvider
     {
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
+        private UsersRepository _usersRepository;
+        private ILogger _log;
         public void Initialize(IDictionary<string, string> parameters, ILogger log)
         {
-            throw new NotImplementedException();
+            _log = log;
+            _usersRepository = new UsersRepository(parameters["connectionString"]);
         }
 
-        public Task<Result> Authorize(string user, string password)
+        public async Task<Result> Authorize(string user, string password)
         {
-            throw new NotImplementedException();
+            var result = await _usersRepository.FindUser(user, password);
+            if (result == null)
+                return new Result()
+                {
+                    Message = "Authorization error",
+                    Success = false
+                };
+
+            return new Result()
+            {
+                Message = "Success",
+                Success = false,
+                Roles = result.Roles.Select(_ => new Role()
+                    {
+                        Id = _.RoleId,
+                        Name = _.RoleId,
+                    })
+            };
         }
 
-        public Task<Result> Register(string user, string password)
+        public async Task<Result> Register(string user, string password)
         {
-            throw new NotImplementedException();
+            var result = await _usersRepository.RegisterUser(user, password);
+            if (!result.Succeeded)
+                return new Result()
+                {
+                    Message = string.Join(";", result.Errors),
+                    Success = false
+                };
+
+            return new Result()
+            {
+                Message = "Registration success",
+                Success = true,
+            };
+        }
+
+        public void Dispose()
+        {
+            _usersRepository?.Dispose();
         }
     }
 }
