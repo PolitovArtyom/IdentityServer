@@ -1,18 +1,21 @@
 ﻿using Autofac;
 using IdentityServer.AuthorizationProvider;
+using IdentityServer.Core;
 using IdentityServer.Core.Configuration;
 
 namespace IdentityServer
 {
-    public class IocConfug
+    public static class IocConfug
     {
-
-        public void Setup()
+        public static IContainer Setup()
         {
             var builder = new ContainerBuilder();
             var configuration = new Configuration();
-          //  var provider = builder.RegisterType<IAuthorisationProvider>
+            var providerBuilder = new ProviderBuilder(configuration.AuthProviderConfiguration);
+            builder.RegisterInstance(providerBuilder.GetAuthProvider()).As<IAuthorisationProvider>();
+            builder.RegisterInstance(providerBuilder.GetRegistrationProvider()).As<IRegistrationProvider>();
+
+            return builder.Build();
         }
-        
     }
 }
