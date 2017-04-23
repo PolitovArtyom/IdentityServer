@@ -1,6 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
-using Autofac;
+﻿using Autofac;
+using IdentityServer.AuthorizationProvider;
+using IdentityServer.Core.Configuration;
 
 namespace IdentityServer
 {
@@ -10,6 +10,8 @@ namespace IdentityServer
         public void Setup()
         {
             var builder = new ContainerBuilder();
+            var configuration = new Configuration();
+          //  var provider = builder.RegisterType<IAuthorisationProvider>
         }
         
     }
