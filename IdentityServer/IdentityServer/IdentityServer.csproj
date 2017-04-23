@@ -47,6 +47,10 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -176,6 +180,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig - Copy.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -203,6 +208,10 @@
     <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IdentityServer.AuthorizationProvider\IdentityServer.AuthorizationProvider.csproj">
+      <Project>{21f3e13b-b3d1-436e-a3d4-a0e2eb2071c9}</Project>
+      <Name>IdentityServer.AuthorizationProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IdentityServer.Data\IdentityServer.Data.csproj">
       <Project>{67ef30f7-48bd-4dc7-9ac3-46b6b8951c53}</Project>
       <Name>IdentityServer.Data</Name>

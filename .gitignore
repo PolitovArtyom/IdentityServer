@@ -10,6 +10,10 @@ IdentityServer/IdentityServer.AuthorizationProvider/bin/
 IdentityServer/IdentityServer.AuthorizationProvider/obj/
 IdentityServer/IdentityServer.AuthorizationProvider/packages/
 
+IdentityServer/IdentityServer.Core/bin/
+IdentityServer/IdentityServer.Core/obj/
+IdentityServer/IdentityServer.Core/packages/
+
 IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/bin/
 IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/obj/
 IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/packages/
