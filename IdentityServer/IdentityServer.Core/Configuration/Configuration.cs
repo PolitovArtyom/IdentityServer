@@ -4,11 +4,13 @@ namespace IdentityServer.Core.Configuration
 {
     public class Configuration
     {
-        public Configuration()
+        public AuthProviderConfiguration AuthProviderConfiguration { get; set; }
+
+        public static Configuration Build()
         {
-            AuthProviderConfiguration = (AuthProviderConfiguration) ConfigurationManager.GetSection("providerSettings");
+            var section = (ProviderSettingsSection)ConfigurationManager.GetSection("providerSettings");
+            return section.ReadConfiguration();
         }
 
-        public AuthProviderConfiguration AuthProviderConfiguration { get; set; }
     }
 }

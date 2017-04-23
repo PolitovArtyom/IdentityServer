@@ -7,11 +7,11 @@ namespace IdentityServer
 {
     public static class IocConfug
     {
-        public static IContainer Setup()
+        public static IContainer GetContainer()
         {
             var builder = new ContainerBuilder();
             var configuration = new Configuration();
-            var providerBuilder = new ProviderBuilder(configuration.AuthProviderConfiguration);
+            var providerBuilder = new ProviderBuilder(Configuration.Build().AuthProviderConfiguration);
             builder.RegisterInstance(providerBuilder.GetAuthProvider()).As<IAuthorisationProvider>();
             builder.RegisterInstance(providerBuilder.GetRegistrationProvider()).As<IRegistrationProvider>();
 

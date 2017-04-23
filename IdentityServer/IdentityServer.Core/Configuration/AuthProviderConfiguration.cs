@@ -6,6 +6,6 @@ namespace IdentityServer.Core.Configuration
     {
         public string AssemblyPath { get; set; }
 
-        public IDictionary<string,string> Parameters { get; set; }
+        public IDictionary<string,string> Parameters{ get; set; }
     }
 }

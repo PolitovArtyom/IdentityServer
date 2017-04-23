@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -27,11 +26,12 @@ namespace IdentityServer.Core
                 throw new FileNotFoundException($"Provider library {assemblyPath} not found");
 
             var assembly = Assembly.LoadFile(assemblyPath);
+            var temp = assembly.GetTypes();
             var provider =
-                assembly.GetTypes().Where(a => typeof(IRegistrationProvider).IsAssignableFrom(a) && !a.IsAbstract);
-            if (provider.Count() != 0)
+                assembly.GetTypes().Where(type => typeof(IRegistrationProvider).IsAssignableFrom(type)).ToList();
+            if (provider.Count() == 0)
                 provider =
-                    assembly.GetTypes().Where(a => typeof(IAuthorisationProvider).IsAssignableFrom(a) && !a.IsAbstract);
+                    assembly.GetTypes().Where(type => typeof(IAuthorisationProvider).IsAssignableFrom(type)).ToList();
 
             var providerInstance = (IAuthorisationProvider) Activator.CreateInstance(provider.Single());
             return providerInstance;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
+using Autofac.Integration.WebApi;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -13,10 +14,11 @@ namespace IdentityServer
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
+            WebApiConfig.Register(config);
 
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(IocConfug.GetContainer());
             ConfigureOAuth(app);
 
-            WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
@@ -28,13 +30,12 @@ namespace IdentityServer
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-               // Provider = new OauthAuthorizationProvider()
+                Provider = new OauthAuthorizationProvider()
             };
 
             // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
         }
 
 

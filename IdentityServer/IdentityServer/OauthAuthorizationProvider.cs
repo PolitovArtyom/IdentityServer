@@ -7,11 +7,8 @@ namespace IdentityServer
 {
     public class OauthAuthorizationProvider : OAuthAuthorizationServerProvider
     {
-        private IAuthorisationProvider _authProvider;
-        public OauthAuthorizationProvider(IAuthorisationProvider provider) : base()
-        {
-            _authProvider = provider;
-        }
+        public IAuthorisationProvider AuthProvider { get; set; }
+      
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -23,7 +20,7 @@ namespace IdentityServer
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            var authResult = await _authProvider.Authorize(context.UserName, context.Password);
+            var authResult = await AuthProvider.Authorize(context.UserName, context.Password);
             if (authResult.Success == false)
             {
                 context.SetError("invalid_grant", authResult.Message);
@@ -32,7 +29,7 @@ namespace IdentityServer
               
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
-            //TODO privder role mapping
+            //TODO provider role mapping
             identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);

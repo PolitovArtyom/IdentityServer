@@ -7,7 +7,7 @@ namespace IdentityServer.Core.Configuration
     public class ProviderSettingsSection : ConfigurationSection
     {
         [ConfigurationProperty("assemblyPath", IsRequired = true)]
-        public string Path => (string) base["path"];
+        public string Path  => (string) base["assemblyPath"];
 
         [ConfigurationProperty("providerSettings")]
         public KeyValueConfigurationCollection ProviderSettings
