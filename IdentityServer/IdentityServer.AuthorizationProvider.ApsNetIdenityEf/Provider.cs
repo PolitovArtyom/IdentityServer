@@ -36,6 +36,16 @@ namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
             };
         }
 
+        public Task<IEnumerable<Role>> GetAllRoles()
+        {
+            var list = new List<Role>()
+            {
+                new Role() {Id="1", Name="user", Issuer = "test"},
+                new Role() {Id="2", Name="admin", Issuer = "test"},
+            };
+            return new Task<IEnumerable<Role>>(()=> list);
+        }
+
         public async Task<Result> Register(string user, string password)
         {
             var result = await _usersRepository.RegisterUser(user, password);
