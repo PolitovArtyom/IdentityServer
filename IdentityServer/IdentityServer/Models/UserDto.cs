@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IdentityServer.Data.Models
+namespace IdentityServer.Models
 {
-    public class User
+    public class UserDto
     {
         [Required]
         [Display(Name = "User name")]

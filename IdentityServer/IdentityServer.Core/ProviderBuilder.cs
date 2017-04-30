@@ -25,14 +25,14 @@ namespace IdentityServer.Core
             if (!File.Exists(assemblyPath))
                 throw new FileNotFoundException($"Provider library {assemblyPath} not found");
 
-            var assembly = Assembly.LoadFile(assemblyPath);
-            var temp = assembly.GetTypes();
+            var assembly = Assembly.LoadFrom(assemblyPath);
             var provider =
                 assembly.GetTypes().Where(type => typeof(IRegistrationProvider).IsAssignableFrom(type)).ToList();
             if (provider.Count() == 0)
                 provider =
                     assembly.GetTypes().Where(type => typeof(IAuthorisationProvider).IsAssignableFrom(type)).ToList();
 
+          
             var providerInstance = (IAuthorisationProvider) Activator.CreateInstance(provider.Single());
             return providerInstance;
         }

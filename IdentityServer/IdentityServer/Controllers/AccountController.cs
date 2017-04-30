@@ -1,80 +1,44 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
-using IdentityServer.Data.Models;
-using IdentityServer.Data.Repositories;
-using Microsoft.AspNet.Identity;
+using IdentityServer.AuthorizationProvider;
+using IdentityServer.Models;
 
 namespace IdentityServer.Controllers
 {
-    [System.Web.Mvc.RoutePrefix("account")]
+    [RoutePrefix("account")]
     public class AccountController : ApiController
     {
-        private UsersRepository _repo = null;
+        private IRegistrationProvider _provider = null;
 
-        public AccountController()
+        public AccountController(IRegistrationProvider provider)
         {
-            _repo = new UsersRepository();
+            _provider = provider;
         }
 
         // POST api/Account/Register
-        [System.Web.Mvc.AllowAnonymous]
-        [System.Web.Mvc.Route("Register")]
-        public async Task<IHttpActionResult> Register(IdentityServer.Data.Models.User userModel)
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> Register(UserDto user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _repo.RegisterUser(userModel);
-
-            IHttpActionResult errorResult = GetErrorResult(result);
-
-            if (errorResult != null)
+            if (_provider == null)
             {
-                return errorResult;
+                return BadRequest("Proivder doesn't support registration");
+            }
+
+            var result = await _provider.Register(user.UserName, user.Password);
+
+           
+            if (result.Success == false)
+            {
+                return BadRequest(result.Message);
             }
 
             return Ok();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repo.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
-
-        private IHttpActionResult GetErrorResult(IdentityResult result)
-        {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
-
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            return null;
         }
     }
 }

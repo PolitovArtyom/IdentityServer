@@ -7,8 +7,12 @@ namespace IdentityServer
 {
     public class OauthAuthorizationProvider : OAuthAuthorizationServerProvider
     {
-        public IAuthorisationProvider AuthProvider { get; set; }
-      
+        private IAuthorisationProvider _provider;
+
+        public OauthAuthorizationProvider(IAuthorisationProvider provider)
+        {
+            _provider = provider;
+        }
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -20,7 +24,7 @@ namespace IdentityServer
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            var authResult = await AuthProvider.Authorize(context.UserName, context.Password);
+            var authResult = await _provider.Authorize(context.UserName, context.Password);
             if (authResult.Success == false)
             {
                 context.SetError("invalid_grant", authResult.Message);

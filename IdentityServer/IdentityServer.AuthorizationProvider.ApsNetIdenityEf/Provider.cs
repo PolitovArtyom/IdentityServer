@@ -27,7 +27,7 @@ namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
             return new Result()
             {
                 Message = "Success",
-                Success = false,
+                Success = true,
                 Roles = result.Roles.Select(_ => new Role()
                     {
                         Id = _.RoleId,
