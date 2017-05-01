@@ -16,8 +16,8 @@ namespace IdentityServer
             var providerBuilder = new ProviderBuilder(Configuration.Build().AuthProviderConfiguration);
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterInstance(providerBuilder.GetAuthProvider()).As<IAuthorisationProvider>();
-            builder.RegisterInstance(providerBuilder.GetRegistrationProvider()).As<IRegistrationProvider>();
+            builder.Register(c => providerBuilder.AuthProvider).As<IAuthorisationProvider>();
+            builder.Register(c => providerBuilder.RegistrationProvider).As<IRegistrationProvider>();
             builder.RegisterType(typeof(OauthAuthorizationProvider)).As<IOAuthAuthorizationServerProvider>();
 
             return builder.Build();

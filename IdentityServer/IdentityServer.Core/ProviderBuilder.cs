@@ -10,14 +10,45 @@ namespace IdentityServer.Core
 {
     public class ProviderBuilder : IDisposable
     {
-        private readonly IAuthorisationProvider _authorisationProvider;
+        private IAuthorisationProvider _authorisationProvider;
+        private bool _initialized;
+        private readonly AuthProviderConfiguration _config;
+
+        public IAuthorisationProvider AuthProvider
+        {
+            get
+            {
+                if (_initialized == false)
+                    Initialize();
+                return _authorisationProvider;
+            }
+        }
+
+
+        public IRegistrationProvider RegistrationProvider
+        {
+            get
+            {
+                if (_initialized == false)
+                    Initialize();
+                return _authorisationProvider as IRegistrationProvider;
+            }
+        }
+
 
         public ProviderBuilder(AuthProviderConfiguration config)
         {
-            _authorisationProvider = Build(config.AssemblyPath);
+            _config = config;
+        }
+
+        private void Initialize()
+        {
+            _authorisationProvider = Build(_config.AssemblyPath);
             var log = new NlogAdapter(LogManager.GetLogger("ProviderLog"));
 
-            _authorisationProvider.Initialize(config.Parameters, log);
+            _authorisationProvider.Initialize(_config.Parameters, log);
+
+            _initialized = true;
         }
 
         private IAuthorisationProvider Build(string assemblyPath)
@@ -32,19 +63,9 @@ namespace IdentityServer.Core
                 provider =
                     assembly.GetTypes().Where(type => typeof(IAuthorisationProvider).IsAssignableFrom(type)).ToList();
 
-          
+
             var providerInstance = (IAuthorisationProvider) Activator.CreateInstance(provider.Single());
             return providerInstance;
-        }
-
-        public IAuthorisationProvider GetAuthProvider()
-        {
-            return _authorisationProvider;
-        }
-
-        public IRegistrationProvider GetRegistrationProvider()
-        {
-            return _authorisationProvider as IRegistrationProvider;
         }
 
         public void Dispose()
