@@ -14,9 +14,9 @@ IdentityServer/IdentityServer.Core/bin/
 IdentityServer/IdentityServer.Core/obj/
 IdentityServer/IdentityServer.Core/packages/
 
-IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/bin/
-IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/obj/
-IdentityServer/IdentityServer.AuthorizationProvider.ApsNetIdenityEf/packages/
+IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/bin/
+IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/obj/
+IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/packages/
 
 IdentityServer/IdentityServer.Web/node_modules/
 IdentityServer/IdentityServer.Web/bin/

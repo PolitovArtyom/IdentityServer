@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
+namespace IdentityServer.AuthorizationProvider.NetIdenity
 {
     public class UsersRepository : IDisposable
     {

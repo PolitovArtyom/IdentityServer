@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
+namespace IdentityServer.AuthorizationProvider.NetIdenity
 {
     public class Provider : IRegistrationProvider
     {

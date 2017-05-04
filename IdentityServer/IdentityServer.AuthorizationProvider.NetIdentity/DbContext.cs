@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace IdentityServer.AuthorizationProvider.ApsNetIdenityEf
+namespace IdentityServer.AuthorizationProvider.NetIdenity
 {
     public class UsersContext : IdentityDbContext<IdentityUser>
     {

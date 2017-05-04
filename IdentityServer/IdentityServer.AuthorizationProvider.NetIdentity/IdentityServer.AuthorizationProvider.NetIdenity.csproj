@@ -7,8 +7,8 @@
     <ProjectGuid>{75794856-B8DF-4D77-9F08-C389BE8C7B20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IdentityServer.AuthorizationProvider.ApsNetIdenityEf</RootNamespace>
-    <AssemblyName>IdentityServer.AuthorizationProvider.ApsNetIdenityEf</AssemblyName>
+    <RootNamespace>IdentityServer.AuthorizationProvider.NetIdenity</RootNamespace>
+    <AssemblyName>IdentityServer.AuthorizationProvider.NetIdenity</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

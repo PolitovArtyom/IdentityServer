@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentutyServer.Web", "Ident
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider", "IdentityServer.AuthorizationProvider\IdentityServer.AuthorizationProvider.csproj", "{21F3E13B-B3D1-436E-A3D4-A0E2EB2071C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider.ApsNetIdenityEf", "IdentityServer.AuthorizationProvider.ApsNetIdenityEf\IdentityServer.AuthorizationProvider.ApsNetIdenityEf.csproj", "{75794856-B8DF-4D77-9F08-C389BE8C7B20}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Core", "IdentityServer.Core\IdentityServer.Core.csproj", "{792A7338-5D13-4946-B778-6EA75AA33582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider.NetIdenity", "IdentityServer.AuthorizationProvider.NetIdentity\IdentityServer.AuthorizationProvider.NetIdenity.csproj", "{75794856-B8DF-4D77-9F08-C389BE8C7B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,18 +73,6 @@ Global
 		{21F3E13B-B3D1-436E-A3D4-A0E2EB2071C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21F3E13B-B3D1-436E-A3D4-A0E2EB2071C9}.Release|x64.ActiveCfg = Release|Any CPU
 		{21F3E13B-B3D1-436E-A3D4-A0E2EB2071C9}.Release|x64.Build.0 = Release|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|Any CPU.ActiveCfg = 64|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|Any CPU.Build.0 = 64|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|x64.ActiveCfg = 64|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|x64.Build.0 = 64|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|x64.Build.0 = Debug|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.ActiveCfg = Release|Any CPU
-		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.Build.0 = Release|Any CPU
 		{792A7338-5D13-4946-B778-6EA75AA33582}.64|Any CPU.ActiveCfg = 64|Any CPU
 		{792A7338-5D13-4946-B778-6EA75AA33582}.64|Any CPU.Build.0 = 64|Any CPU
 		{792A7338-5D13-4946-B778-6EA75AA33582}.64|x64.ActiveCfg = 64|Any CPU
@@ -97,6 +85,18 @@ Global
 		{792A7338-5D13-4946-B778-6EA75AA33582}.Release|Any CPU.Build.0 = Release|Any CPU
 		{792A7338-5D13-4946-B778-6EA75AA33582}.Release|x64.ActiveCfg = Release|Any CPU
 		{792A7338-5D13-4946-B778-6EA75AA33582}.Release|x64.Build.0 = Release|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|Any CPU.ActiveCfg = 64|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|Any CPU.Build.0 = 64|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|x64.ActiveCfg = 64|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.64|x64.Build.0 = 64|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Debug|x64.Build.0 = Debug|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.ActiveCfg = Release|Any CPU
+		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
