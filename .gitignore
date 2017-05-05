@@ -28,3 +28,5 @@ IdentityServer/IdentutyServer.Web/node_modules/
 IdentityServer/IdentutyServer.Web/obj/
 IdentityServer/IdentutyServer.Web/bin/
 npm-debug.log
+IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/bin/
+IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/obj/

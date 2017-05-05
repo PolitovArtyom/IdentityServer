@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using AspNet.Identity.SQLite;
 
-namespace IdentityServer.AuthorizationProvider.NetIdenity
+
+namespace IdentityServer.AuthorizationProvider.NetIdentity
 {
     public class UsersRepository : IDisposable
     {
@@ -13,7 +14,8 @@ namespace IdentityServer.AuthorizationProvider.NetIdenity
         public UsersRepository(string connectionName)
         {
             _ctx = new UsersContext(connectionName);
-            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
+            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser, IdentityRole>(_ctx));
+            //  _userManager = new UserManager<IdentityUser>(_ctx);
         }
 
         public async Task<IdentityResult> RegisterUser(string login, string password)

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer.AuthorizationProvider.NetIdenity
+namespace IdentityServer.AuthorizationProvider.NetIdentity
 {
     public class Provider : IRegistrationProvider
     {
@@ -28,11 +28,11 @@ namespace IdentityServer.AuthorizationProvider.NetIdenity
             {
                 Message = "Success",
                 Success = true,
-                Roles = result.Roles.Select(_ => new Role()
-                    {
-                        Id = _.RoleId,
-                        Name = _.RoleId,
-                    })
+                //Roles = result..Select(_ => new Role()
+                //    {
+                //        Id = _.RoleId,
+                //        Name = _.RoleId,
+                //    })
             };
         }
 

@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using AspNet.Identity.SQLite;
 
-namespace IdentityServer.AuthorizationProvider.NetIdenity
+namespace IdentityServer.AuthorizationProvider.NetIdentity
 {
-    public class UsersContext : IdentityDbContext<IdentityUser>
+    public class UsersContext : SQLiteDatabase
     {
         public UsersContext(string connectionName)
             : base(connectionName)

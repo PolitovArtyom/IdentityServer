@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Authorizatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Core", "IdentityServer.Core\IdentityServer.Core.csproj", "{792A7338-5D13-4946-B778-6EA75AA33582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider.NetIdenity", "IdentityServer.AuthorizationProvider.NetIdentity\IdentityServer.AuthorizationProvider.NetIdenity.csproj", "{75794856-B8DF-4D77-9F08-C389BE8C7B20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider.NetIdentity", "IdentityServer.AuthorizationProvider.NetIdentity\IdentityServer.AuthorizationProvider.NetIdentity.csproj", "{75794856-B8DF-4D77-9F08-C389BE8C7B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.AuthorizationProvider.NetIdentityTests", "IdentityServer.AuthorizationProvider.NetIdentityTests\IdentityServer.AuthorizationProvider.NetIdentityTests.csproj", "{D2B649A2-D184-4BA7-829D-02782AD5839D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,18 @@ Global
 		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.ActiveCfg = Release|Any CPU
 		{75794856-B8DF-4D77-9F08-C389BE8C7B20}.Release|x64.Build.0 = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.64|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.64|Any CPU.Build.0 = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.64|x64.ActiveCfg = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.64|x64.Build.0 = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2B649A2-D184-4BA7-829D-02782AD5839D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
