@@ -14,6 +14,11 @@ IdentityServer/IdentityServer.Core/bin/
 IdentityServer/IdentityServer.Core/obj/
 IdentityServer/IdentityServer.Core/packages/
 
+IdentityServer/IdentityServer.TokenProvider/bin/
+IdentityServer/IdentityServer.TokenProvider/obj/
+IdentityServer/IdentityServer.TokenProvider/packages/
+
+
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/bin/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/obj/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/packages/

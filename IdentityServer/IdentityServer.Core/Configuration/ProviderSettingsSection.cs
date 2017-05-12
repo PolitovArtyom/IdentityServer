@@ -13,19 +13,16 @@ namespace IdentityServer.Core.Configuration
         public KeyValueConfigurationCollection ProviderSettings
             => (KeyValueConfigurationCollection) base["providerSettings"];
 
-        public Configuration ReadConfiguration()
+        public AuthProviderConfiguration Read()
         {
             var dictionary = new Dictionary<string, string>(ProviderSettings.Count, StringComparer.OrdinalIgnoreCase);
             foreach (KeyValueConfigurationElement element in ProviderSettings)
                 dictionary.Add(element.Key, element.Value);
 
-            return new Configuration
+            return new AuthProviderConfiguration
             {
-                AuthProviderConfiguration = new AuthProviderConfiguration
-                {
-                    AssemblyPath = Path,
-                    Parameters = dictionary
-                }
+                AssemblyPath = Path,
+                Parameters = dictionary
             };
         }
 

@@ -27,6 +27,11 @@ namespace IdentityServer.Data.Repositories
             return _ctx.Clients.Find(id);
         }
 
+        public Client Get(string identifier)
+        {
+            return _ctx.Clients.SingleOrDefault(c => c.Identifier.Equals(identifier, StringComparison.OrdinalIgnoreCase));
+        }
+
         public void Add(Client client)
         {
             if (_ctx.Clients.Any(a => a.Identifier.Equals(client.Identifier, StringComparison.OrdinalIgnoreCase)))

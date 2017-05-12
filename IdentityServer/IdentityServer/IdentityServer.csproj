@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="JwtFormat.cs" />
     <Compile Include="Models\ClientDTO.cs" />
     <Compile Include="Models\RoleDTO.cs" />
     <Compile Include="Models\UserDto.cs" />
@@ -236,6 +237,10 @@
     <ProjectReference Include="..\IdentityServer.Data\IdentityServer.Data.csproj">
       <Project>{67ef30f7-48bd-4dc7-9ac3-46b6b8951c53}</Project>
       <Name>IdentityServer.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdentityServer.TokenProvider\IdentityServer.TokenProvider.csproj">
+      <Project>{56439F30-E562-4B3C-A306-C55A19396FCE}</Project>
+      <Name>IdentityServer.TokenProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
