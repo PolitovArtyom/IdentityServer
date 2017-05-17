@@ -1,8 +1,6 @@
-﻿using IdentityServer.TokenProvider;
-using System;
-using System.Data.Entity.Core;
-using IdentityServer.Data.Models;
+﻿using System;
 using IdentityServer.Data.Repositories;
+using IdentityServer.TokenProvider;
 using Microsoft.Owin.Security;
 
 namespace IdentityServer
@@ -24,10 +22,13 @@ namespace IdentityServer
             if (data == null)
                 throw new ArgumentNullException(nameof(data));
 
-            string clientId = data.Properties.Dictionary.ContainsKey(ClientPropertyKey) ? data.Properties.Dictionary[ClientPropertyKey] : null;
-            Client client = _clientsRepository.Get(clientId);
-            if(client == null)
-                throw new ObjectNotFoundException($"Client with identifier {clientId} not registered");
+            string clientId;
+            if (data.Properties.Dictionary.ContainsKey(ClientPropertyKey))
+                clientId = data.Properties.Dictionary[ClientPropertyKey];
+            else
+                throw new ArgumentNullException($"Parameter {ClientPropertyKey} not found in token request");
+
+            var client = _clientsRepository.Get(clientId);
 
             //TODO where put role mapping?
             return _tokenProvider.Generate(client, data.Identity);
