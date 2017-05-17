@@ -11,6 +11,7 @@ namespace IdentityServer.Core
     public class ProviderBuilder : IDisposable
     {
         private IAuthorisationProvider _authorisationProvider;
+        private IRegistrationProvider _registrationProvider;
         private bool _initialized;
         private readonly AuthProviderConfiguration _config;
 
@@ -31,7 +32,7 @@ namespace IdentityServer.Core
             {
                 if (_initialized == false)
                     Initialize();
-                return _authorisationProvider as IRegistrationProvider;
+                return _registrationProvider;
             }
         }
 
@@ -48,6 +49,7 @@ namespace IdentityServer.Core
 
             _authorisationProvider.Initialize(_config.Parameters, log);
 
+            _registrationProvider = _authorisationProvider as IRegistrationProvider;
             _initialized = true;
         }
 
@@ -71,6 +73,7 @@ namespace IdentityServer.Core
         public void Dispose()
         {
             _authorisationProvider?.Dispose();
+            _registrationProvider?.Dispose();
         }
     }
 }

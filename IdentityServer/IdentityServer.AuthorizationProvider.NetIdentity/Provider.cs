@@ -65,7 +65,7 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
 
         public void Dispose()
         {
-            _usersRepository?.Dispose();
+           // _usersRepository?.Dispose();
         }
     }
 }
