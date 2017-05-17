@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
 using IdentityServer.AuthorizationProvider;
@@ -6,6 +7,7 @@ using IdentityServer.Core;
 using IdentityServer.Core.Configuration;
 using IdentityServer.Data.Repositories;
 using IdentityServer.TokenProvider;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 
 namespace IdentityServer
@@ -24,9 +26,8 @@ namespace IdentityServer
             builder.RegisterType(typeof(ClientsRepository)).As<ClientsRepository>();
             builder.RegisterType(typeof(RolesRepository)).As<RolesRepository>();
 
-
-          
-            builder.RegisterType(typeof(JwtProvider)).As<ITokenProvider>();
+            builder.RegisterType(typeof(JwtProvider)).As<ITokenProvider>().WithParameter("issuer","test").WithParameter("period", TimeSpan.FromMinutes(1));
+            builder.RegisterType(typeof(JwtFormat)).As<ISecureDataFormat<AuthenticationTicket>>();
 
             return builder.Build();
         }
