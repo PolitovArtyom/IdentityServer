@@ -3,13 +3,18 @@ using IdentityServer.AuthorizationProvider;
 
 namespace IdentityServer.Core
 {
-    internal class NlogAdapter : ILogger
+    public class NlogAdapter : ILogger
     {
         private readonly NLog.ILogger _log;
 
-        public NlogAdapter(NLog.ILogger log)
+        public NlogAdapter()
         {
-            _log = log;
+            _log = NLog.LogManager.GetCurrentClassLogger();
+        }
+
+        public NlogAdapter(string loggerName)
+        {
+            _log = NLog.LogManager.GetLogger(loggerName);
         }
 
         public void Trace(string message)

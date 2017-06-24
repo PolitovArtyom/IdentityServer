@@ -5,6 +5,7 @@ using System.Reflection;
 using IdentityServer.AuthorizationProvider;
 using IdentityServer.Core.Configuration;
 using NLog;
+using ILogger = IdentityServer.AuthorizationProvider.ILogger;
 
 namespace IdentityServer.Core
 {
@@ -14,6 +15,7 @@ namespace IdentityServer.Core
         private IRegistrationProvider _registrationProvider;
         private bool _initialized;
         private readonly AuthProviderConfiguration _config;
+        private readonly ILogger _log;
 
         public IAuthorisationProvider AuthProvider
         {
@@ -37,17 +39,17 @@ namespace IdentityServer.Core
         }
 
 
-        public ProviderBuilder(AuthProviderConfiguration config)
+        public ProviderBuilder(AuthProviderConfiguration config, ILogger providerLog)
         {
             _config = config;
+            _log = providerLog;
         }
 
         private void Initialize()
         {
             _authorisationProvider = Build(_config.AssemblyPath);
-            var log = new NlogAdapter(LogManager.GetLogger("ProviderLog"));
 
-            _authorisationProvider.Initialize(_config.Parameters, log);
+            _authorisationProvider.Initialize(_config.Parameters, _log);
 
             _registrationProvider = _authorisationProvider as IRegistrationProvider;
             _initialized = true;
@@ -61,10 +63,9 @@ namespace IdentityServer.Core
             var assembly = Assembly.LoadFrom(assemblyPath);
             var provider =
                 assembly.GetTypes().Where(type => typeof(IRegistrationProvider).IsAssignableFrom(type)).ToList();
-            if (provider.Count() == 0)
+            if (!provider.Any())
                 provider =
                     assembly.GetTypes().Where(type => typeof(IAuthorisationProvider).IsAssignableFrom(type)).ToList();
-
 
             var providerInstance = (IAuthorisationProvider) Activator.CreateInstance(provider.Single());
             return providerInstance;

@@ -17,7 +17,7 @@ namespace IdentityServer
         public static IContainer GetContainer()
         {
             var builder = new ContainerBuilder();
-            var providerBuilder = new ProviderBuilder(Configuration.Read().AuthProviderConfiguration);
+            var providerBuilder = new ProviderBuilder(Configuration.Read().AuthProviderConfiguration, new NlogAdapter("providerLog"));
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.Register(c => providerBuilder.AuthProvider).As<IAuthorisationProvider>();
