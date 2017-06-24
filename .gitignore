@@ -32,6 +32,12 @@ IdentityServer/IdentityServer/obj/
 IdentityServer/IdentutyServer.Web/node_modules/
 IdentityServer/IdentutyServer.Web/obj/
 IdentityServer/IdentutyServer.Web/bin/
+IdentityServer/IdentutyServer.Web/\*.js
+IdentityServer/IdentutyServer.Web/\*.map
+
 npm-debug.log
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/bin/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/obj/
+
+IdentityServer/.vs/
+
