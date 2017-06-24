@@ -21,8 +21,8 @@ namespace IdentityServer
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            var clientId = string.Empty;
-            var clientSecret = string.Empty;
+            string clientId;
+            string clientSecret;
             // string symmetricKeyAsBase64 = string.Empty;
 
             if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
@@ -40,7 +40,7 @@ namespace IdentityServer
                 return Task.FromResult<object>(null);
             }
 
-            var client = _clientsRepository.Get(context.ClientId);
+            var client =  _clientsRepository.Get(context.ClientId).Result;
 
             if (client == null)
             {

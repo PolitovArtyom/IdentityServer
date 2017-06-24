@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer.Data.Contexts;
 using IdentityServer.Data.Models;
@@ -22,36 +22,38 @@ namespace IdentityServer.Data.Repositories
             return await _ctx.Clients.ToListAsync();
         }
 
-        public Client Get(int id)
+        public Task<Client> Get(int id)
         {
-            return _ctx.Clients.Find(id);
+            return _ctx.Clients.FindAsync(id);
         }
 
-        public Client Get(string identifier)
+        public Task<Client> Get(string identifier)
         {
-            return _ctx.Clients.SingleOrDefault(c => c.Identifier.Equals(identifier, StringComparison.OrdinalIgnoreCase));
+            return
+                _ctx.Clients.SingleOrDefaultAsync(
+                    c => c.Identifier.Equals(identifier, StringComparison.OrdinalIgnoreCase));
         }
 
-        public void Add(Client client)
+        public async Task Add(Client client)
         {
-            if (_ctx.Clients.Any(a => a.Identifier.Equals(client.Identifier, StringComparison.OrdinalIgnoreCase)))
-                throw new ApplicationException($"Client with identifier {client.Identifier} already exists");
+            if ( await _ctx.Clients.AnyAsync(a => a.Identifier.Equals(client.Identifier, StringComparison.OrdinalIgnoreCase)))
+                 throw new DuplicateNameException($"Client with identifier {client.Identifier} already exists");
             _ctx.Entry(client).State = EntityState.Added;
-            _ctx.SaveChanges();
+           await _ctx.SaveChangesAsync();
         }
 
-        public void Update(Client client)
+        public async Task Update(Client client)
         {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));
             _ctx.Entry(client).State = EntityState.Modified;
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             _ctx.Entry(new Client {Id = id}).State = EntityState.Deleted;
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
         }
 
         public void Dispose()

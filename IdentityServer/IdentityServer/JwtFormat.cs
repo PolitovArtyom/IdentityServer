@@ -28,9 +28,9 @@ namespace IdentityServer
             else
                 throw new ArgumentNullException($"Parameter {ClientPropertyKey} not found in token request");
 
-            var client = _clientsRepository.Get(clientId);
+            var client = _clientsRepository.Get(clientId).Result;
 
-            //TODO where put role mapping?
+            //TODO where to put role mapping?
             return _tokenProvider.Generate(client, data.Identity);
         }
 

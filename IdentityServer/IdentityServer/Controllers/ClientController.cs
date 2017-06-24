@@ -7,7 +7,9 @@ using IdentityServer.Models;
 namespace IdentityServer.Controllers
 {
     [RoutePrefix("client")]
-    //  [Authorize]
+    #if RELEASE
+    [Authorize]
+    #endif
     public class ClientController : ApiController
     {
         private readonly ClientsRepository _repository;
@@ -22,7 +24,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            var client = _repository.Get(id);
+            var client = await _repository.Get(id);
 
             return Ok(new ClientDTO(client));
         }
@@ -41,7 +43,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            _repository.Add(client.ToModel());
+            await _repository.Add(client.ToModel());
             return Ok();
         }
 
@@ -50,7 +52,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            _repository.Update(client.ToModel());
+            await _repository.Update(client.ToModel());
             return Ok();
         }
 
@@ -60,7 +62,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            _repository.Delete(id);
+            await _repository.Delete(id);
             return Ok();
         }
     }

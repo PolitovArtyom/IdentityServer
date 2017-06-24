@@ -7,6 +7,10 @@ using IdentityServer.Models;
 namespace IdentityServer.Controllers
 {
     [RoutePrefix("role")]
+
+    #if RELEASE
+    [Authorize]
+    #endif
     public class RoleController : ApiController
     {
         private readonly RolesRepository _roleRepo;
@@ -19,7 +23,7 @@ namespace IdentityServer.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            var result = _roleRepo.GetClientRoles(clientId);
+            var result = await _roleRepo.GetClientRoles(clientId);
             return Ok(result.Select(role => new RoleDTO(role)));
         }
 
@@ -29,7 +33,7 @@ namespace IdentityServer.Controllers
                 return BadRequest(this.ModelState);
 
             var roleModel = role.ToModel();
-            _roleRepo.Add(roleModel);
+            await _roleRepo.Add(roleModel);
 
             return Ok();
         }
@@ -39,7 +43,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
             var roleModel = role.ToModel();
-            _roleRepo.Update(roleModel);
+            await _roleRepo.Update(roleModel);
 
             return Ok();
         }
@@ -49,7 +53,7 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
-            _roleRepo.Delete(id);
+            await _roleRepo.Delete(id);
             return Ok();
         }
     }
