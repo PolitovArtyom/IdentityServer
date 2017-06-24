@@ -1,6 +1,6 @@
 ﻿namespace IdentityServer.AuthorizationProvider
 {
-    public class Role
+    public class Right
     {
         public string Id { get; set; }
 

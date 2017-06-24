@@ -20,11 +20,18 @@ namespace IdentityServer.Data.Repositories
 
         public async Task<IQueryable<Role>> GetClientRoles(int clientId)
         {
-            return _ctx.Roles.Where(a => a.Client.Id == clientId);
+            return _ctx.Roles.Where(a => a.Client.Id == clientId).AsNoTracking();
+        }
+
+        public IQueryable<Role> GetClientRolesByRights(int clientId, IEnumerable<string> rightIds)
+        {
+            return  _ctx.Roles.Where(r => r.ClientId == clientId &&
+                                                       rightIds.Contains(r.Right.Identifier));
         }
 
         public async Task Add(Role role)
         {
+            //TODO implement right mapping 
            bool isUniqueRoleName = await IsUniqueRoleName(role.Name, role.ClientId);
            if (isUniqueRoleName == false)
                 throw new DuplicateNameException($"Role with name {role.Name} already exisits for client {role.Client.Name}");

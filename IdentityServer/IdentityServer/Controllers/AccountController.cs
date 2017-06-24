@@ -18,7 +18,7 @@ namespace IdentityServer.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IHttpActionResult> Register(UserDto user)
+        public async Task<IHttpActionResult> Register(UserDTO user)
         {
             if (!ModelState.IsValid)
             {

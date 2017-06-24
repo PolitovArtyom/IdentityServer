@@ -20,7 +20,7 @@ namespace IdentityServer.Models
         [Required]
         public int ClientId { get; set; }
 
-        //TODO поддержка множества прав ресурса
+        [Required]
         public int? RightId { get; set; } = null;
 
         public Role ToModel()
@@ -33,7 +33,7 @@ namespace IdentityServer.Models
             };
 
             if(this.RightId.HasValue)
-                model.Rights.Add(new ResourceRight() { Id = RightId.Value } );
+                model.Right = new ResourceRight() {Id = RightId.Value};
             return model;
         }
     }

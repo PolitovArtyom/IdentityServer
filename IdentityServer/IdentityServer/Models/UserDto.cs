@@ -2,7 +2,7 @@
 
 namespace IdentityServer.Models
 {
-    public class UserDto
+    public class UserDTO
     {
         [Required]
         [Display(Name = "User name")]

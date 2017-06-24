@@ -5,6 +5,7 @@ namespace IdentityServer.Models
 {
     public class ClientDTO
     {
+        //TODO DTO models validation and validation attribute on controllers methods
         public ClientDTO()
         {
         }

@@ -4,6 +4,7 @@ namespace IdentityServer.AuthorizationProvider
 {
     public interface ILogger
     {
+        //TODO Make project for logging abstractions
         void Trace(string message);
         void Trace(string message, Exception exception);
 

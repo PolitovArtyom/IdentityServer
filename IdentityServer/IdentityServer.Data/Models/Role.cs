@@ -14,9 +14,11 @@ namespace IdentityServer.Data.Models
 
         [Required]
         public int ClientId { get; set; }
-       
+
+        [Required]
         public virtual Client Client { get; set; }
 
-        public ICollection<ResourceRight> Rights { get; set; } = new List<ResourceRight>();
+        [Required]
+        public ResourceRight Right { get; set; } 
     }
 }

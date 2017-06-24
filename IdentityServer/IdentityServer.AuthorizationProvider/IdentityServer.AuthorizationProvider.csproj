@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Role.cs" />
+    <Compile Include="Right.cs" />
     <Compile Include="IAuthorisationProvider.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IRegistrationProvider.cs" />

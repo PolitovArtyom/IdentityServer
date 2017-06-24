@@ -19,7 +19,7 @@ namespace IdentityServer.Data.Repositories
 
         public async Task<IEnumerable<Client>> List()
         {
-            return await _ctx.Clients.ToListAsync();
+            return await _ctx.Clients.AsNoTracking().ToListAsync();
         }
 
         public Task<Client> Get(int id)

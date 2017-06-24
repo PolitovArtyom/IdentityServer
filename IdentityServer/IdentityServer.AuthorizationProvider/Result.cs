@@ -8,6 +8,6 @@ namespace IdentityServer.AuthorizationProvider
 
         public string Message { get; set; }
 
-        public IEnumerable<Role> Roles { get; set; } = new List<Role>();
+        public IEnumerable<Right> Rights { get; set; } = new List<Right>();
     }
 }

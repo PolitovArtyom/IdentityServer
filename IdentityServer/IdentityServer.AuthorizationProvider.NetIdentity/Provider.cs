@@ -28,7 +28,7 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
             {
                 Message = "Success",
                 Success = true,
-                //Roles = result..Select(_ => new Role()
+                //Rights = result..Select(_ => new Right()
                 //    {
                 //        Id = _.RoleId,
                 //        Name = _.RoleId,
@@ -36,14 +36,14 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
             };
         }
 
-        public Task<IEnumerable<Role>> GetAllRoles()
+        public Task<IEnumerable<Right>> GetAllRights()
         {
-            var list = new List<Role>()
+            var list = new List<Right>()
             {
-                new Role() {Id="1", Name="user", Issuer = "test"},
-                new Role() {Id="2", Name="admin", Issuer = "test"},
+                new Right() {Id="1", Name="user", Issuer = "test"},
+                new Right() {Id="2", Name="admin", Issuer = "test"},
             };
-            return new Task<IEnumerable<Role>>(()=> list);
+            return new Task<IEnumerable<Right>>(()=> list);
         }
 
         public async Task<Result> Register(string user, string password)

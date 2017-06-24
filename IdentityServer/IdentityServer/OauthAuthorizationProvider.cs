@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer.AuthorizationProvider;
@@ -12,19 +14,20 @@ namespace IdentityServer
     {
         private readonly IAuthorisationProvider _provider;
         private readonly ClientsRepository _clientsRepository;
+        private readonly RolesRepository _rolesRepository;
 
-        public OauthAuthorizationProvider(IAuthorisationProvider provider, ClientsRepository clientsRepository)
+        public OauthAuthorizationProvider(IAuthorisationProvider provider, ClientsRepository clientsRepository, RolesRepository rolesRepository)
         {
             _provider = provider;
             _clientsRepository = clientsRepository;
+            _rolesRepository = rolesRepository;
         }
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             string clientId;
             string clientSecret;
-            // string symmetricKeyAsBase64 = string.Empty;
-
+           
             if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
                 context.TryGetFormCredentials(out clientId, out clientSecret);
 
@@ -36,12 +39,11 @@ namespace IdentityServer
 
             if (clientSecret == null)
             {
-                context.SetError("invalid_clientSecret", "client_secret is not set");
+                context.SetError("invalid_client_secret", "client_secret is not set");
                 return Task.FromResult<object>(null);
             }
 
             var client =  _clientsRepository.Get(context.ClientId).Result;
-
             if (client == null)
             {
                 context.SetError("invalid_clientId", $"Invalid client_id '{context.ClientId}'");
@@ -50,7 +52,7 @@ namespace IdentityServer
 
             if (!client.Secret.Equals(clientSecret))
             {
-                context.SetError("invalid_clientSecret", $"Invalid client_secret for client '{context.ClientId}'");
+                context.SetError("invalid_client_secret", $"Invalid client_secret for client '{context.ClientId}'");
                 return Task.FromResult<object>(null);
             }
 
@@ -71,14 +73,20 @@ namespace IdentityServer
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
-            //TODO provider role mapping
-            identity.AddClaim(new Claim("role", "user"));
 
+            int clientId = int.Parse(context.ClientId);
+            var userRoles =  _rolesRepository.GetClientRolesByRights(clientId, authResult.Rights.Select(r => r.Id));
+            if (userRoles != null)
+            {
+                foreach (var role in userRoles)
+                {
+                    identity.AddClaim(new Claim("role", role.Name));
+                }
+            }
+           
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
-                {
-                    "audience", context.ClientId == null ? string.Empty : context.ClientId
-                }
+                {"audience", context.ClientId}
             });
 
             var ticket = new AuthenticationTicket(identity, props);
