@@ -9,14 +9,14 @@ namespace IdentityServer.Core.Configuration
         [ConfigurationProperty("assemblyPath", IsRequired = true)]
         public string Path  => (string) base["assemblyPath"];
 
-        [ConfigurationProperty("providerSettings")]
-        public KeyValueConfigurationCollection ProviderSettings
-            => (KeyValueConfigurationCollection) base["providerSettings"];
+        [ConfigurationProperty("params")]
+        public KeyValueConfigurationCollection Params
+            => (KeyValueConfigurationCollection) base["params"];
 
         public AuthProviderConfiguration Read()
         {
-            var dictionary = new Dictionary<string, string>(ProviderSettings.Count, StringComparer.OrdinalIgnoreCase);
-            foreach (KeyValueConfigurationElement element in ProviderSettings)
+            var dictionary = new Dictionary<string, string>(Params.Count, StringComparer.OrdinalIgnoreCase);
+            foreach (KeyValueConfigurationElement element in Params)
                 dictionary.Add(element.Key, element.Value);
 
             return new AuthProviderConfiguration
