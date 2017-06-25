@@ -19,6 +19,6 @@ namespace IdentityServer.Data.Models
         public virtual Client Client { get; set; }
 
         [Required]
-        public ResourceRight Right { get; set; } 
+        public ProviderRight Right { get; set; } 
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IdentityServer.Data.Models
 {
-    public class ResourceRight
+    public class ProviderRight
     {
         [Key]
         public long Id { get; set; }

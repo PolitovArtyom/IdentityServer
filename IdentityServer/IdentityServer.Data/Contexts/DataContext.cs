@@ -21,7 +21,7 @@ namespace IdentityServer.Data.Contexts
 
         public DbSet<Role> Roles { get; set; }
 
-        public DbSet<ResourceRight> ResourceRights { get; set; }
+        public DbSet<ProviderRight> ResourceRights { get; set; }
 
         public DbSet<AuthorisationResource> Resources { get; set; }
     }

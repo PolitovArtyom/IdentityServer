@@ -33,7 +33,7 @@ namespace IdentityServer.Models
             };
 
             if(this.RightId.HasValue)
-                model.Right = new ResourceRight() {Id = RightId.Value};
+                model.Right = new ProviderRight() {Id = RightId.Value};
             return model;
         }
     }

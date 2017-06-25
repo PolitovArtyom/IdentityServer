@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,12 +39,11 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
 
         public Task<IEnumerable<Right>> GetAllRights()
         {
-            var list = new List<Right>()
+            return Task.Run(() => new List<Right>()
             {
                 new Right() {Id="1", Name="user", Issuer = "test"},
                 new Right() {Id="2", Name="admin", Issuer = "test"},
-            };
-            return new Task<IEnumerable<Right>>(()=> list);
+            }.AsEnumerable());
         }
 
         public async Task<Result> Register(string user, string password)

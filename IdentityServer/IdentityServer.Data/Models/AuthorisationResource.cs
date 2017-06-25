@@ -11,6 +11,6 @@ namespace IdentityServer.Data.Models
         [Required]
         public string Name { get; set; }
 
-        public ICollection<ResourceRight> Rights { get; set; }
+        public ICollection<ProviderRight> Rights { get; set; }
     }
 }
