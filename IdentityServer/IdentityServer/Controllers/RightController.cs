@@ -13,7 +13,7 @@ namespace IdentityServer.Controllers
     #endif
     public class RightController : ApiController
     {
-        //TODO implement validation attribute and put model validation logic there
+        //TODO implement validation attribute and put model validation code there
         private readonly IAuthorisationProvider _provider;
         public RightController(IAuthorisationProvider provider)
         {

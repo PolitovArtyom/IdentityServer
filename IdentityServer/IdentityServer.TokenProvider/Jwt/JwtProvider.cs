@@ -5,7 +5,7 @@ using System.Text;
 using IdentityServer.Data.Models;
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer.TokenProvider
+namespace IdentityServer.TokenProvider.Jwt
 {
     public class JwtProvider : ITokenProvider
     {

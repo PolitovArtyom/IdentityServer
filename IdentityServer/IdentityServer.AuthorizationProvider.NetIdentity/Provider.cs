@@ -29,11 +29,15 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
             {
                 Message = "Success",
                 Success = true,
-                //Rights = result..Select(_ => new Right()
-                //    {
-                //        Id = _.RoleId,
-                //        Name = _.RoleId,
-                //    })
+                Rights = new List<Right>()
+                {
+                    new Right()
+                    {
+                        Id = "1",
+                        Name = "user",
+                        Issuer = "test"
+                    } 
+                }
             };
         }
 
@@ -65,7 +69,7 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
 
         public void Dispose()
         {
-           // _usersRepository?.Dispose();
+            _usersRepository?.Dispose();
         }
     }
 }

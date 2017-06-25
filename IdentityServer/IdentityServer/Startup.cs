@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using IdentityServer.TokenProvider;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -39,10 +37,7 @@ namespace IdentityServer
                 AccessTokenFormat = (ISecureDataFormat<AuthenticationTicket>)container.Resolve(typeof(ISecureDataFormat<AuthenticationTicket>)),
             };
 
-            // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
-           
-            //   app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
 
     }

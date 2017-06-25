@@ -1,17 +1,17 @@
 ﻿using System;
 using IdentityServer.Data.Repositories;
-using IdentityServer.TokenProvider;
 using Microsoft.Owin.Security;
 
-namespace IdentityServer
+namespace IdentityServer.TokenProvider.Jwt
 {
-    public class JwtFormat : ISecureDataFormat<AuthenticationTicket>
+    public class JwtFormatter : ISecureDataFormat<AuthenticationTicket>
     {
+        //TODO not forget to add nuget references at Owin
         private readonly ITokenProvider _tokenProvider;
         private readonly ClientsRepository _clientsRepository;
         private const string ClientPropertyKey = "audience";
 
-        public JwtFormat(ITokenProvider tokenProvider, ClientsRepository clientsRepository)
+        public JwtFormatter(ITokenProvider tokenProvider, ClientsRepository clientsRepository)
         {
             _tokenProvider = tokenProvider;
             _clientsRepository = clientsRepository;
@@ -30,7 +30,6 @@ namespace IdentityServer
 
             var client = _clientsRepository.Get(clientId).Result;
 
-            //TODO where to put role mapping?
             return _tokenProvider.Generate(client, data.Identity);
         }
 

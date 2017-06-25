@@ -203,9 +203,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\Filters\ValidationAttribute.cs" />
     <Compile Include="Controllers\RightController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="JwtFormat.cs" />
     <Compile Include="Models\ClientDTO.cs" />
     <Compile Include="Models\ProviderRightDTO.cs" />
     <Compile Include="Models\RoleDTO.cs" />
