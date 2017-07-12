@@ -6,7 +6,6 @@ namespace IdentityServer.TokenProvider.Jwt
 {
     public class JwtFormatter : ISecureDataFormat<AuthenticationTicket>
     {
-        //TODO not forget to add nuget references at Owin
         private readonly ITokenProvider _tokenProvider;
         private readonly ClientsRepository _clientsRepository;
         private const string ClientPropertyKey = "audience";
