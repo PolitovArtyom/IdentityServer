@@ -20,6 +20,7 @@ namespace IdentityServer.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Register(UserDTO user)
         {
+            //TODO check model for null
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

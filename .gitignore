@@ -18,10 +18,19 @@ IdentityServer/IdentityServer.TokenProvider/bin/
 IdentityServer/IdentityServer.TokenProvider/obj/
 IdentityServer/IdentityServer.TokenProvider/packages/
 
+IdentityServer/IdentityServer.AuthorizationProvider.TestProvider/bin/
+IdentityServer/IdentityServer.AuthorizationProvider.TestProvider/obj/
+IdentityServer/IdentityServer.AuthorizationProvider.TestProvider/packages/
+
+IdentityServer/IdentityServer.AuthorizationProvider.TestProviderTests/bin/
+IdentityServer/IdentityServer.AuthorizationProvider.TestProviderTests/obj/
+IdentityServer/IdentityServer.AuthorizationProvider.TestProviderTests/packages/
+
 
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/bin/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/obj/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentity/packages/
+
 
 IdentityServer/IdentityServer.Web/node_modules/
 IdentityServer/IdentityServer.Web/bin/
@@ -40,4 +49,8 @@ IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/bin/
 IdentityServer/IdentityServer.AuthorizationProvider.NetIdentityTests/obj/
 
 IdentityServer/.vs/
+
+/bin/
+/packages/
+/obj/
 

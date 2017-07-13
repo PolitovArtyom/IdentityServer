@@ -1,0 +1,18 @@
+﻿CREATE TABLE `Users` (
+	`Id`	INTEGER PRIMARY KEY,
+	`UserName`	varchar(256) NOT NULL,
+	`PasswordHash`	INTEGER NOT NULL
+);
+
+CREATE TABLE `Roles` (
+	`Id`	INTEGER PRIMARY KEY,
+	`Name`	varchar(256) NOT NULL
+);
+
+CREATE TABLE `UserRoles` (
+	`UserId`	INTEGER NOT NULL,
+	`RoleId`	INTEGER NOT NULL,
+
+	FOREIGN KEY(`UserId`) REFERENCES `Users`(`Id`) ON DELETE CASCADE,
+	FOREIGN KEY(`RoleId`) REFERENCES `Roles`(`Id`) ON DELETE CASCADE
+);
