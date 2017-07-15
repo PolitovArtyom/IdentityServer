@@ -50,6 +50,11 @@ namespace IdentityServer.AuthorizationProvider.NetIdentity
             }.AsEnumerable());
         }
 
+        public Task<Right> GetRight(string id)
+        {
+            return Task.Run(() => new Right() {Id = "1", Name = "test"});
+        }
+
         public async Task<Result> Register(string user, string password)
         {
             var result = await _usersRepository.RegisterUser(user, password);

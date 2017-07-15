@@ -1,6 +1,9 @@
 ﻿using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using IdentityServer.AuthorizationProvider;
+using IdentityServer.Data.Models;
 using IdentityServer.Data.Repositories;
 using IdentityServer.Models;
 
@@ -14,9 +17,12 @@ namespace IdentityServer.Controllers
     public class RoleController : ApiController
     {
         private readonly RolesRepository _roleRepo;
-        public RoleController()
+        private readonly IAuthorisationProvider _provider;
+
+        public RoleController(RolesRepository rolesRepository, IAuthorisationProvider provider)
         {
-            _roleRepo = new RolesRepository();
+            _roleRepo = rolesRepository;
+            _provider = provider;
         }
 
         public async Task<IHttpActionResult> Get(int clientId)
@@ -24,7 +30,8 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
             var result = await _roleRepo.GetClientRoles(clientId);
-            return Ok(result.Select(role => new RoleDTO(role)));
+           
+            return Ok(result.ToArray().Select(role => new RoleDTO(role)));
         }
 
         public async Task<IHttpActionResult> Post(RoleDTO role)
@@ -32,7 +39,13 @@ namespace IdentityServer.Controllers
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
 
+            var right = await _provider.GetRight(role.RightId);
+            if (right == null)
+                return BadRequest("Wrong RightId");
+                
             var roleModel = role.ToModel();
+            roleModel.Right = new ProviderRight() {Identifier = right.Id, Name = right.Name};
+
             await _roleRepo.Add(roleModel);
 
             return Ok();

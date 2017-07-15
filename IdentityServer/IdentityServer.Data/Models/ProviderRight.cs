@@ -6,6 +6,7 @@ namespace IdentityServer.Data.Models
 {
     public class ProviderRight
     {
+        //TODO this entity should be removed. All neccessary information will be stored in Role
         [Key]
         public long Id { get; set; }
 

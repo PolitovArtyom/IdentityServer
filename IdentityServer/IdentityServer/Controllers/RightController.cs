@@ -39,7 +39,7 @@ namespace IdentityServer.Controllers
             var result = rights.FirstOrDefault(r => r.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
             if (result == null)
-                return NotFound();
+                return Ok();
 
             return Ok(new ProviderRightDTO(result));
         }

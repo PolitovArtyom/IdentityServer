@@ -9,5 +9,6 @@ namespace IdentityServer.AuthorizationProvider
         void Initialize(IDictionary<string, string> parameters, ILogger log);
         Task<Result> Authorize(string user, string password);
         Task<IEnumerable<Right>> GetAllRights();
+        Task<Right> GetRight(string id);
     }
 }

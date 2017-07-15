@@ -12,16 +12,16 @@ namespace IdentityServer.Models
             this.Id = role.Id;
             this.Name = role.Name;
             this.ClientId = role.ClientId;
+            this.RightId = role.Right.Identifier;
         }
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public int ClientId { get; set; }
-
         [Required]
-        public int? RightId { get; set; } = null;
+        public string RightId { get; set; }
 
         public Role ToModel()
         {
@@ -29,11 +29,10 @@ namespace IdentityServer.Models
             {
               Id=this.Id,
               Name=this.Name,
-              ClientId = ClientId
+              ClientId = ClientId,
+              Right = new ProviderRight() { Identifier = RightId }
             };
 
-            if(this.RightId.HasValue)
-                model.Right = new ProviderRight() {Id = RightId.Value};
             return model;
         }
     }
