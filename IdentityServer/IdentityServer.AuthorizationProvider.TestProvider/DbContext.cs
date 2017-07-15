@@ -109,8 +109,6 @@ namespace IdentityServer.AuthorizationProvider.TestProvider
             }
         }
 
-
-     
         public async Task AddUser(string userName, string passwordHash, IEnumerable<Role> roles)
         {
             try
@@ -138,6 +136,36 @@ namespace IdentityServer.AuthorizationProvider.TestProvider
 
                         connection.Close();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error accessing provider db", ex);
+            }
+        }
+
+        public async Task<Role> GetRole(string id)
+        {
+            try
+            {
+                var getRolesCommand = $"SELECT r.Id, r.Name FROM Roles r WHERE r.Id = {id}";
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    var command = new SQLiteCommand(getRolesCommand, connection);
+                    var reader = await command.ExecuteReaderAsync();
+
+                    Role role = null;
+                    while (await reader.ReadAsync())
+                    {
+                        role = new Role()
+                        {
+                            Id = reader.GetInt64(0),
+                            Name = reader.GetString(1)
+                        };
+                    }
+                    connection.Close();
+                    return role;
                 }
             }
             catch (Exception ex)

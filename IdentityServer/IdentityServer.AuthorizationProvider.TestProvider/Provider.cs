@@ -66,6 +66,17 @@ namespace IdentityServer.AuthorizationProvider.TestProvider
             });
         }
 
+        public async Task<Right> GetRight(string id)
+        {
+            var role = await _dbContext.GetRole(id);
+            return new Right()
+            {
+                Id = role.Id.ToString(),
+                Name = role.Name,
+                Issuer = "TestProvider"
+            };
+        }
+
         public async Task<Result> Register(string user, string password)
         {
             if(await _dbContext.GetUser(user) != null)
